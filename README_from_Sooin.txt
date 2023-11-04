@@ -1,3 +1,5 @@
+Unity version - 2022.3.12f1
+
 The scene might not appear when you first cloned the project.
 Go to 'Scenes' folder in the project menu 
 and choose the scene to start working on the project.
