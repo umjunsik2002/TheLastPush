@@ -540,6 +540,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 909140446489504442, guid: 45d1d4a1dae77204dab75ba48474fa0f, type: 3}
   m_PrefabInstance: {fileID: 4910509498024311698}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244252016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244252011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfca85661d43ead44965a27def68b4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileType: 0
 --- !u!1001 &4910509498024311698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,7 +616,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 909140446489504442, guid: 45d1d4a1dae77204dab75ba48474fa0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244252016}
   m_SourcePrefab: {fileID: 100100000, guid: 45d1d4a1dae77204dab75ba48474fa0f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

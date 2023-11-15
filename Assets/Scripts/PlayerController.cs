@@ -53,4 +53,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    public void ResetPlayer()
+    {
+        playerPos = new Tuple<int, int>(0, 0);
+    }
 }

@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public float levelWidth;
     public float levelLength;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         TileArray = new GameObject[(int)levelWidth, (int)levelLength];
         generateLevel();
@@ -100,5 +100,21 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetLevel()
+    {
+        //destroy all tiles
+        for (int i = 0; i < levelWidth; i++)
+        {
+            for (int j = 0; j < levelLength; j++)
+            {
+                Destroy(TileArray[i, j]);
+            }
+        }
+        //reset the array   
+        TileArray = new GameObject[(int)levelWidth, (int)levelLength];
+        //generate a new level
+        generateLevel();
     }
 }

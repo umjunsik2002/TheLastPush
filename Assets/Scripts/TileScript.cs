@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[InitializeOnLoad]
 public class TileScript : MonoBehaviour
 {
     public enum TileType
@@ -14,17 +16,19 @@ public class TileScript : MonoBehaviour
         Goal
         
     }
+ 
     public TileType tileType;
     // Start is called before the first frame update
     void Start()
     {
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if the tile is a hazard, set the color to red
-        if (tileType == TileType.Hazard)
+         if (tileType == TileType.Hazard)
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
@@ -44,6 +48,6 @@ public class TileScript : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.black;
         }
-        
+        //if the tile is a hazard, set the color to red
     }
 }

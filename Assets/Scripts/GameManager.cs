@@ -22,5 +22,13 @@ public class GameManager : MonoBehaviour
         } else if(gameOver && !gameWon){
             GameObject.Find("LevelManager").GetComponent<LevelManager>().redify();
         }
+
+        if(Input.GetKeyDown(KeyCode.R)){
+
+            GameObject.Find("Player").GetComponent<PlayerController>().ResetPlayer();
+            GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
+            gameOver = false;
+            gameWon = false;
+        }
     }
 }
