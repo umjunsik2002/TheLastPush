@@ -36,8 +36,26 @@ public class PlayerController : MonoBehaviour
         {
             playerPos = new Tuple<int, int>(playerPos.Item1 + 1, playerPos.Item2);
         }
+        GameObject tile = tiles[playerPos.Item1, playerPos.Item2];
+        if (tile.GetComponent<TileScript>().tileType == TileScript.TileType.Hazard)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
+        }
+        else if (tile.GetComponent<TileScript>().tileType == TileScript.TileType.Goal)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
+            GameObject.Find("GameManager").GetComponent<GameManager>().gameWon = true;
+        }
+        if (tile.GetComponent<TileScript>().tileType != TileScript.TileType.Obstacle)
+        {
 
-        transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+            transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+        }
 
+    }
+
+    public void ResetPlayer()
+    {
+        playerPos = new Tuple<int, int>(0, 0);
     }
 }
