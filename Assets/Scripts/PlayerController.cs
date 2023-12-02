@@ -1,12 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private GameObject[,] tiles;
     private Tuple<int, int> playerPos;
+
+    //adjust speed
+    public float movementSpeed = 5f;
 
     public void SetTiles(GameObject[,] tileArray)
     {
@@ -19,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Vector3 targetPosition = transform.position;
         SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         if (Input.GetKeyDown(KeyCode.W) && playerPos.Item2 < tiles.GetLength(1) - 1)
         {
@@ -49,7 +54,9 @@ public class PlayerController : MonoBehaviour
         if (tile.GetComponent<TileScript>().tileType != TileScript.TileType.Obstacle)
         {
 
-            transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+           // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+            targetPosition = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
     }
