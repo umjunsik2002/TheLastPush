@@ -81,8 +81,17 @@ public class UIDraggingDirections : MonoBehaviour, IBeginDragHandler, IDragHandl
 
             if (targetDirectionBoxRect != null)
             {
+                // Remove existing note child if any old direction
+                foreach (Transform child in targetDirectionBoxRect.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
                 Vector3 localPos = rectTransform.parent.InverseTransformPoint(targetDirectionBoxRect.position);
                 clone.GetComponent<RectTransform>().anchoredPosition = localPos;
+
+                // Set the cloned note as a child of the target direction box
+                clone.transform.SetParent(targetDirectionBoxRect);
             }
             else
             {
@@ -113,6 +122,16 @@ public class UIDraggingDirections : MonoBehaviour, IBeginDragHandler, IDragHandl
 
             if (targetDirectionBoxRect != null)
             {
+                // Remove existing note child if any
+                foreach (Transform child in targetDirectionBoxRect.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                // Set the note as a child of the target note box
+                rectTransform.SetParent(targetDirectionBoxRect);
+
+                
                 Vector3 localPos = rectTransform.parent.InverseTransformPoint(targetDirectionBoxRect.position);
                 rectTransform.anchoredPosition = localPos;
             }

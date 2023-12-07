@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Vector2 originalPosition;
-    
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
@@ -32,6 +32,7 @@ public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             clone = Instantiate(gameObject, transform.parent);
             RectTransform cloneRectTransform = clone.GetComponent<RectTransform>();
+            cloneRectTransform.SetParent(transform.parent); // Set the parent to the same as the original note
             cloneRectTransform.anchoredPosition = rectTransform.anchoredPosition;
             cloneOriginalPosition = cloneRectTransform.anchoredPosition;
             canvasGroup.blocksRaycasts = false;
@@ -81,8 +82,17 @@ public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             if (targetNoteBoxRect != null)
             {
+                // Remove existing note child if any old notes
+                foreach (Transform child in targetNoteBoxRect.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                
                 Vector3 localPos = rectTransform.parent.InverseTransformPoint(targetNoteBoxRect.position);
                 clone.GetComponent<RectTransform>().anchoredPosition = localPos;
+                // Set the cloned note as a child of the target note box
+                clone.transform.SetParent(targetNoteBoxRect);
             }
             else
             {
@@ -113,6 +123,14 @@ public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             if (targetNoteBoxRect != null)
             {
+                // Remove existing note child if any
+                foreach (Transform child in targetNoteBoxRect.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                // Set the note as a child of the target note box
+                rectTransform.SetParent(targetNoteBoxRect);
                 Vector3 localPos = rectTransform.parent.InverseTransformPoint(targetNoteBoxRect.position);
                 rectTransform.anchoredPosition = localPos;
             }
