@@ -18,4 +18,9 @@ public class PauseCanvas : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -21,12 +21,6 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
-    public void clickOptions()
-    {
-        Time.timeScale = 0f;
-        Debug.Log("Time.timeScale: " + Time.timeScale);
-    }
-
     public void clickQuit()
     {
         Application.Quit();
