@@ -66,12 +66,13 @@ public class EnemyController : MonoBehaviour
     {
         Tuple<int, int> enemyDir = GetComponent<EnemyBehavior>().EnemyDir;
 
-        //enemyTiles.Clear(); // Clear the list before populating it again
+        enemyTiles.Clear(); // Clear the list before populating it again
 
         enemyTiles.Add(enemyPos);
         enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2));
         enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2 + enemyDir.Item2));
-
+        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2+ enemyDir.Item2+ enemyDir.Item2));
+        
         // Print the tiles to the console
         foreach (var tile in enemyTiles)
         {

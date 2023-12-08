@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if(gameWon){
             GameObject.Find("LevelManager").GetComponent<LevelManager>().greenify();
         } else if(gameOver && !gameWon){
@@ -54,12 +53,11 @@ public class GameManager : MonoBehaviour
         //check collision
         //if collision, game over
         CheckCollisionWithEnemy();
-
         
     }
     void CheckCollisionWithEnemy()
     {
-        Debug.Log("detected");
+        
         
         // Check if the player is on an enemy tile or within its vision tile
         Tuple<int,int> playerpos = player.getPlayerPos();
@@ -69,9 +67,9 @@ public class GameManager : MonoBehaviour
         foreach (var enemyTile in enemyTiles)
         {
             
-            if (playerpos == enemyTile)
+            if (playerpos.Equals(enemyTile))
             {
-
+                Debug.Log("detected");
                 // Pause or reset the game as needed
                 gameOver=true;
                 gameWon=false;
