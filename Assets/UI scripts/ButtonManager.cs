@@ -38,6 +38,16 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Start");
     }
 
+    public void clickLevel1()
+    {
+
+    }
+
+    public void clickLevel2()
+    {
+
+    }
+
     public void clickEnglish()
     {
         languageManager.languageCode = "EN";
