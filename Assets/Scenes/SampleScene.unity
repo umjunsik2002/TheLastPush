@@ -2112,18 +2112,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: 0
   gameWon: 0
-<<<<<<< HEAD
-  player: {fileID: 0}
-  playerInput: {fileID: 0}
-  enemy: {fileID: 0}
-  enemyBehavior: {fileID: 0}
-=======
   player: {fileID: 511173192}
   playerInput: {fileID: 1197148529}
   enemy: {fileID: 1462920185}
   enemyBehavior: {fileID: 1462920184}
   uiButton: {fileID: 1841946939}
->>>>>>> SamuelLiao
 --- !u!4 &402772673
 Transform:
   m_ObjectHideFlags: 0
