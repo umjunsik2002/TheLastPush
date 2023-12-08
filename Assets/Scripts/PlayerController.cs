@@ -66,6 +66,11 @@ public class PlayerController : MonoBehaviour
 
     }
     public void movePlayer(Tuple<int, int> dir){
+        Tuple<int, int> newPos = new Tuple<int, int>(playerPos.Item1 + dir.Item1, playerPos.Item2 + dir.Item2);
+        if(newPos.Item1 < 0 || newPos.Item1 >= tiles.GetLength(0) || newPos.Item2 < 0 || newPos.Item2 >= tiles.GetLength(1)){
+            Debug.Log("Out of bounds");
+            return;
+        }
         playerPos = new Tuple<int, int>(playerPos.Item1 + dir.Item1, playerPos.Item2 + dir.Item2);
          SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         GameObject tile = tiles[playerPos.Item1, playerPos.Item2];
