@@ -44,12 +44,17 @@ public class GameManager : MonoBehaviour
     }
     void move(PlayerNoteDir move, EnemyNoteDir enemyMove){
         player.movePlayer(move.dir);
+        StartCoroutine(enemyBehavior.RotateEnemySmoothly(new Vector3(enemyMove.dir.Item1, 0, enemyMove.dir.Item2)));
         enemy.moveEnemy(enemyMove.dir);
+        //check collision
+        //if collision, game over
+        
     }
     IEnumerator CustomUpdate(){
         int idx = 0;
         int enemyIdx = 0;
         Debug.Log("playerMoves.Length: " + playerMoves.Length);
+        //TODO: && !gameOver
         while(idx < playerMoves.Length && idx < enemyMoves.Length){
             if(playerMoves[idx].note == 0) yield break;
 
