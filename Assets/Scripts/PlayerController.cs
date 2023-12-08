@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPosition = transform.position;
+        Vector3 targetPosition = transform.position+ new Vector3(0,2,0);
         SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         if (Input.GetKeyDown(KeyCode.W) && playerPos.Item2 < tiles.GetLength(1) - 1)
         {
@@ -60,12 +60,17 @@ public class PlayerController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            targetPosition = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+            targetPosition = tiles[playerPos.Item1, playerPos.Item2].transform.position+ new Vector3(3,3,0);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
     }
     public void movePlayer(Tuple<int, int> dir){
+        Tuple<int, int> newPos = new Tuple<int, int>(playerPos.Item1 + dir.Item1, playerPos.Item2 + dir.Item2);
+        if(newPos.Item1 < 0 || newPos.Item1 >= tiles.GetLength(0) || newPos.Item2 < 0 || newPos.Item2 >= tiles.GetLength(1)){
+            Debug.Log("Out of bounds");
+            return;
+        }
         playerPos = new Tuple<int, int>(playerPos.Item1 + dir.Item1, playerPos.Item2 + dir.Item2);
          SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         GameObject tile = tiles[playerPos.Item1, playerPos.Item2];

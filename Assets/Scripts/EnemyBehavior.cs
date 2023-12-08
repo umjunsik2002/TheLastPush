@@ -83,8 +83,8 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
 
-        Debug.Log($"Sum: {sum}");
-        PrintNoteDirectionPairs(noteDirectionPairs);
+        // Debug.Log($"Sum: {sum}");
+        // PrintNoteDirectionPairs(noteDirectionPairs);
         return noteDirectionPairs;
     }
     private bool isRotating = false;
@@ -118,9 +118,9 @@ public class EnemyBehavior : MonoBehaviour
                 if (!isRotating)
                 {
                     StartCoroutine(RotateEnemySmoothly(new Vector3(noteDir.dir.Item1, 0, noteDir.dir.Item2)));
-                    EnemyDir = noteDir.dir;
+                    
                 }
-                enemy.moveEnemy(noteDir.dir);
+                
                 yield return new WaitForSeconds(0.5f);
             }
         }

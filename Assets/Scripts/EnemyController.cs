@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private GameObject[,] tiles;
     private Tuple<int, int> enemyPos;
-    public Tuple<int,int> initialpos = new Tuple<int, int>(5,5);
+    public Tuple<int,int> initialpos = new Tuple<int, int>(3,1);
 
     EnemyBehavior enemyBehavior;
 
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(2.5f,2.5f,-2.5f);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
         
@@ -45,39 +45,30 @@ public class EnemyController : MonoBehaviour
     }
     public void moveEnemy(Tuple<int, int> dir){
         enemyPos = new Tuple<int, int>(enemyPos.Item1 + dir.Item1, enemyPos.Item2 + dir.Item2);
-         SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
+        SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         GameObject tile = tiles[enemyPos.Item1, enemyPos.Item2];
         
         if (tile.GetComponent<TileScript>().tileType != TileScript.TileType.Obstacle)
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(-3,-3,0);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
     }
 
-    public void ResetPlayer()
+    public void ResetEnemy(Tuple<int, int> pos)
     {
-        enemyPos = new Tuple<int, int>(5, 5);
+        enemyPos = pos;
     }
     public List<Tuple<int, int>> GetEnemyTiles()
     {
-        Tuple<int, int> enemyDir = GetComponent<EnemyBehavior>().EnemyDir;
 
         enemyTiles.Clear(); // Clear the list before populating it again
 
         enemyTiles.Add(enemyPos);
-        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2));
-        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2 + enemyDir.Item2));
-        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2+ enemyDir.Item2+ enemyDir.Item2));
-        
-        // Print the tiles to the console
-        foreach (var tile in enemyTiles)
-        {
-            Debug.Log($"Enemy Tile: ({tile.Item1}, {tile.Item2})");
-        }
+
 
         return enemyTiles;
         }

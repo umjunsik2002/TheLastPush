@@ -23,7 +23,7 @@ public class PlayerInputMovement : MonoBehaviour
     public GameObject[] noteSlots;       // Assign UI grid note slots in the Unity Editor
     public GameObject[] directionSlots;   // Assign UI grid direction slots in the Unity Editor
     //public Button yourUIButton;           // Assign your UI button in the Unity Editor
-
+    
     private PlayerController player;
     void Start()
     {
@@ -78,12 +78,39 @@ public class PlayerInputMovement : MonoBehaviour
         PrintNoteDirectionPairs(noteDirectionPairs);
         return noteDirectionPairs;
     }
+    
+    private bool isRotating = false;
+    public IEnumerator RotatePlayerSmoothly(Vector3 targetDirection)
+    {
+        isRotating = true;
+
+        Quaternion fromRotation = transform.rotation;
+        Quaternion toRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+
+        float elapsedTime = 0f;
+        float rotationTime = 0.1f;
+
+        while (elapsedTime < rotationTime)
+        {
+            player.transform.rotation = Quaternion.Slerp(fromRotation, toRotation, elapsedTime / rotationTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        player.transform.rotation = toRotation;
+        isRotating = false;
+    }
     IEnumerator move(NoteDir[] noteDirs)
     {
         foreach (NoteDir noteDir in noteDirs)
         {
             for (int k = 0; k < noteDir.note; k++)
             {
+                if (!isRotating)
+                {
+                    StartCoroutine(RotatePlayerSmoothly(new Vector3(noteDir.dir.Item1, 0, noteDir.dir.Item2)));
+                    
+                }
                 player.movePlayer(noteDir.dir);
                 yield return new WaitForSeconds(0.5f);
             }
