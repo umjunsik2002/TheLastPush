@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     {
         GameManager myGameManager = FindObjectOfType<GameManager>();
         int level = myGameManager.getLevel();
+        Debug.Log(level);
         if(level == 1){
             levelWidth = 7;
             levelLength = 4;
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour
         else if(level == 2){
             levelWidth = 4;
             levelLength = 12;
-            TileArray = new GameObject[(int)levelWidth, (int)levelLength];
+            
             hazardTiles.Add(new Tuple<int, int>(0, 11));
             hazardTiles.Add(new Tuple<int, int>(0, 10));
             hazardTiles.Add(new Tuple<int, int>(0, 9));
@@ -44,6 +45,7 @@ public class LevelManager : MonoBehaviour
             hazardTiles.Add(new Tuple<int, int>(3, 10));
             hazardTiles.Add(new Tuple<int, int>(3, 11));
         }
+        TileArray = new GameObject[(int)levelWidth, (int)levelLength];
         float tileWidth = TilePrefab.GetComponent<Renderer>().bounds.size.x;
         for (int i = 0; i < levelWidth; i++)
         {

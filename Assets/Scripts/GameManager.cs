@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     public bool gameOver;
     public bool gameWon;
-    public int currLevel = 2;
+    public int currLevel = 1;
 
     public List<Tuple<int, int>> enemyTiles = new List<Tuple<int, int>>();
 
