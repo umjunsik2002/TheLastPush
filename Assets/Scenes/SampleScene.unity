@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1928885}
   - component: {fileID: 1928887}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox4
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 100554681}
   - component: {fileID: 100554683}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox1
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 168631423}
   - component: {fileID: 168631425}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox7
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 219369141}
   - component: {fileID: 219369143}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox1
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 246033671}
   - component: {fileID: 246033673}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox2
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 334536860}
   m_Layer: 5
   m_Name: WholeNote
-  m_TagString: Untagged
+  m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 408870726}
   - component: {fileID: 408870728}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox7
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 486269766}
   - component: {fileID: 486269768}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox4
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: 513487245}
   - component: {fileID: 513487247}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox3
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2547,7 +2547,7 @@ GameObject:
   - component: {fileID: 643090912}
   m_Layer: 5
   m_Name: Up
-  m_TagString: Untagged
+  m_TagString: Direction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2806,7 +2806,7 @@ GameObject:
   - component: {fileID: 790018302}
   - component: {fileID: 790018304}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox6
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3003,7 +3003,7 @@ GameObject:
   - component: {fileID: 838026378}
   - component: {fileID: 838026380}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox8
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3636,7 +3636,7 @@ GameObject:
   - component: {fileID: 1008058219}
   - component: {fileID: 1008058221}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox3
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3757,7 +3757,7 @@ GameObject:
   - component: {fileID: 1044293084}
   - component: {fileID: 1044293086}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox6
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3973,6 +3973,68 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &1197148528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197148530}
+  - component: {fileID: 1197148529}
+  m_Layer: 0
+  m_Name: PlayerInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1197148529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197148528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca8f67da5a33b14cb8ce2651d87745f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteSlots:
+  - {fileID: 219369139}
+  - {fileID: 2052050134}
+  - {fileID: 1008058217}
+  - {fileID: 1928883}
+  - {fileID: 1303665413}
+  - {fileID: 790018300}
+  - {fileID: 408870724}
+  - {fileID: 838026376}
+  directionSlots:
+  - {fileID: 100554679}
+  - {fileID: 246033669}
+  - {fileID: 513487243}
+  - {fileID: 486269764}
+  - {fileID: 1483664138}
+  - {fileID: 1044293082}
+  - {fileID: 168631421}
+  - {fileID: 1255632396}
+--- !u!4 &1197148530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197148528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 420, y: 236, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211661079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4155,7 @@ GameObject:
   - component: {fileID: 1255632398}
   - component: {fileID: 1255632400}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox8
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4351,7 +4413,7 @@ GameObject:
   - component: {fileID: 1290838087}
   m_Layer: 5
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Direction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4516,7 +4578,7 @@ GameObject:
   - component: {fileID: 1303665415}
   - component: {fileID: 1303665417}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox5
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5165,7 +5227,7 @@ GameObject:
   - component: {fileID: 1434949306}
   m_Layer: 5
   m_Name: Down
-  m_TagString: Untagged
+  m_TagString: Direction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5330,7 +5392,7 @@ GameObject:
   - component: {fileID: 1483664140}
   - component: {fileID: 1483664142}
   m_Layer: 5
-  m_Name: DirectionBox
+  m_Name: DirectionBox5
   m_TagString: DirectionBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5856,7 +5918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1841946937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1197148529}
+        m_TargetAssemblyTypeName: PlayerInputMovement, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1864014243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,7 +5945,7 @@ GameObject:
   - component: {fileID: 1864014247}
   m_Layer: 5
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Direction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6259,7 +6333,7 @@ GameObject:
   - component: {fileID: 2052050136}
   - component: {fileID: 2052050138}
   m_Layer: 5
-  m_Name: NoteBox
+  m_Name: NoteBox2
   m_TagString: NoteBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6604,3 +6678,4 @@ SceneRoots:
   - {fileID: 402772673}
   - {fileID: 46365108}
   - {fileID: 2081961288}
+  - {fileID: 1197148530}
