@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public LanguageManager languageManager;
+    private PauseManager pauseManager;
+    private LanguageManager languageManager;
 
     private void Start()
     {
+        pauseManager = FindObjectOfType<PauseManager>();
+        if (pauseManager == null)
+        {
+            Debug.LogError("PauseManager not found in the scene. Make sure it exists and is active.");
+        }
+
         languageManager = FindObjectOfType<LanguageManager>();
         if (languageManager == null)
         {
@@ -21,9 +28,9 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
-    public void clickQuit()
+    public void clickOptions()
     {
-        Application.Quit();
+        pauseManager.clickPause();
     }
 
     public void clickBack()

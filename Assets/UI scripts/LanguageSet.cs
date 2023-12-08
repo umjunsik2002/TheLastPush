@@ -9,8 +9,6 @@ public class LanguageSet : MonoBehaviour
     public TMP_Text startButtonText;
     public TMP_Text optionsButtonText;
     public TMP_Text creditsButtonText;
-    public TMP_Text quitButtonText;
-    public TMP_Text languageText;
 
     public LanguageManager languageManager;
 
@@ -38,8 +36,6 @@ public class LanguageSet : MonoBehaviour
             startButtonText.text = "Start";
             optionsButtonText.text = "Options";
             creditsButtonText.text = "Credits";
-            quitButtonText.text = "Quit";
-            languageText.text = " Languages:";
         }
 
         if (languageCode == "KO")
@@ -47,8 +43,6 @@ public class LanguageSet : MonoBehaviour
             startButtonText.text = "시작";
             optionsButtonText.text = "설정";
             creditsButtonText.text = "크레딧";
-            quitButtonText.text = "종료";
-            languageText.text = " 언어:";
         }
     }
 }
