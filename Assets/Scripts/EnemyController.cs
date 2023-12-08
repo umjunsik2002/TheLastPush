@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private GameObject[,] tiles;
     private Tuple<int, int> enemyPos;
-    public Tuple<int,int> initialpos = new Tuple<int, int>(5,5);
+    public Tuple<int,int> initialpos = new Tuple<int, int>(3,1);
 
     EnemyBehavior enemyBehavior;
 
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(2.5f,2.5f,-2.5f);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
         
@@ -52,15 +52,15 @@ public class EnemyController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(-3,-3,0);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
     }
 
-    public void ResetPlayer()
+    public void ResetEnemy(Tuple<int, int> pos)
     {
-        enemyPos = new Tuple<int, int>(5, 5);
+        enemyPos = pos;
     }
     public List<Tuple<int, int>> GetEnemyTiles()
     {
