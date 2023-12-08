@@ -92,12 +92,12 @@ public class PlayerInputMovement : MonoBehaviour
 
         while (elapsedTime < rotationTime)
         {
-            transform.rotation = Quaternion.Slerp(fromRotation, toRotation, elapsedTime / rotationTime);
+            player.transform.rotation = Quaternion.Slerp(fromRotation, toRotation, elapsedTime / rotationTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = toRotation;
+        player.transform.rotation = toRotation;
         isRotating = false;
     }
     IEnumerator move(NoteDir[] noteDirs)
