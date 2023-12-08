@@ -66,6 +66,9 @@ public class PlayerInputMovement : MonoBehaviour
                 //cut out the (Clone) part of the name
                 noteName = noteName.Substring(0, noteName.Length - 7);
                 sum += noteTypes[noteName];
+                if(noteName == "EighthRest" || noteName == "QuarterRest" || noteName == "HalfRest" || noteName == "WholeRest"){
+                    pair.dir = new Tuple<int, int>(0, 0);
+                }
                 noteDirectionPairs[i] = pair;
 
             }
