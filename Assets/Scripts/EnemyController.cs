@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(2.5f,2.5f,-2.5f);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
         
@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position;
+            Vector3 targetPosition = tiles[enemyPos.Item1, enemyPos.Item2].transform.position + new Vector3(-3,-3,0);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
