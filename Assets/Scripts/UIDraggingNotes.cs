@@ -12,6 +12,8 @@ public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private GameObject clone;
     private Vector2 cloneOriginalPosition;
+    [SerializeField] private AudioSource juice;
+    [SerializeField] private ParticleSystem juice2; 
 
     private void Start()
     {
@@ -58,6 +60,9 @@ public class UIDraggingNotes : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        juice.Play();
+        juice2.transform.position = transform.position;
+        juice2.Play();
         if (clone != null)
         {
             canvasGroup.blocksRaycasts = true;
