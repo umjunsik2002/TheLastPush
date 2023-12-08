@@ -42,15 +42,7 @@ public class EnemyController : MonoBehaviour
         enemyPos = new Tuple<int, int>(enemyPos.Item1 + dir.Item1, enemyPos.Item2 + dir.Item2);
          SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         GameObject tile = tiles[enemyPos.Item1, enemyPos.Item2];
-        if (tile.GetComponent<TileScript>().tileType == TileScript.TileType.Hazard)
-        {
-            GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
-        }
-        else if (tile.GetComponent<TileScript>().tileType == TileScript.TileType.Goal)
-        {
-            GameObject.Find("GameManager").GetComponent<GameManager>().gameOver = true;
-            GameObject.Find("GameManager").GetComponent<GameManager>().gameWon = true;
-        }
+        
         if (tile.GetComponent<TileScript>().tileType != TileScript.TileType.Obstacle)
         {
 
