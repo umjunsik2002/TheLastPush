@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerInputMovement : MonoBehaviour
 {
     Dictionary<string, int> noteTypes = new Dictionary<string, int>();
-    Dictionary<string, Tuple<int,int> > dirTypes = new Dictionary<string, Tuple<int,int>>();
+    Dictionary<string, Tuple<int, int>> dirTypes = new Dictionary<string, Tuple<int, int>>();
 
     [System.Serializable]
     public struct NoteDirectionPair
@@ -15,7 +15,8 @@ public class PlayerInputMovement : MonoBehaviour
         public GameObject note;
         public GameObject direction;
     }
-    public struct NoteDir{
+    public struct NoteDir
+    {
         public int note;
         public Tuple<int, int> dir;
     }
@@ -42,15 +43,10 @@ public class PlayerInputMovement : MonoBehaviour
 
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
-    public NoteDir GetNoteDir(NoteDirectionPair noteDirectionPair){
-        NoteDir noteDir = new NoteDir();
-        noteDir.note = noteTypes[noteDirectionPair.note.name.Substring(0, noteDirectionPair.note.name.Length - 7)];
-        noteDir.dir = new Tuple<int, int>(dirTypes[noteDirectionPair.direction.name.Substring(0, noteDirectionPair.direction.name.Length - 7)].Item1, dirTypes[noteDirectionPair.direction.name.Substring(0, noteDirectionPair.direction.name.Length - 7)].Item2);
-        return noteDir;
-    }
-    public NoteDirectionPair[] GetNoteDirectionPairs()
+
+    public NoteDir[] GetNoteDirectionPairs()
     {
-        NoteDirectionPair[] noteDirectionPairs = new NoteDirectionPair[Mathf.Min(noteSlots.Length, directionSlots.Length)];
+        NoteDir[] noteDirectionPairs = new NoteDir[Mathf.Min(noteSlots.Length, directionSlots.Length)];
         int sum = 0;
         for (int i = 0; i < noteDirectionPairs.Length; i++)
         {
@@ -59,20 +55,19 @@ public class PlayerInputMovement : MonoBehaviour
 
             if (note != null && direction != null)
             {
-                NoteDirectionPair pair = new NoteDirectionPair
+                int noteValue = noteTypes[note.name.Substring(0, note.name.Length - 7)];
+                Tuple<int, int> directionValue = dirTypes[direction.name.Substring(0, direction.name.Length - 7)];
+                NoteDir pair = new NoteDir
                 {
-                    note = note,
-                    direction = direction
+                    note = noteValue,
+                    dir = directionValue
                 };
                 string noteName = note.name;
                 //cut out the (Clone) part of the name
                 noteName = noteName.Substring(0, noteName.Length - 7);
                 sum += noteTypes[noteName];
                 noteDirectionPairs[i] = pair;
-                NoteDir noteDir = GetNoteDir(pair);
-                for(int k = 0; k <= noteDir.note; k++){
-                    move(noteDir);
-                }
+
             }
         }
         Debug.Log($"Sum: {sum}");
@@ -80,9 +75,16 @@ public class PlayerInputMovement : MonoBehaviour
         PrintNoteDirectionPairs(noteDirectionPairs);
         return noteDirectionPairs;
     }
-    IEnumerator move(NoteDir noteDir){
-        player.movePlayer(noteDir.dir);
-        yield return new WaitForSeconds(1);
+    IEnumerator move(NoteDir[] noteDirs)
+    {
+        foreach (NoteDir noteDir in noteDirs)
+        {
+            for (int k = 0; k < noteDir.note; k++)
+            {
+                player.movePlayer(noteDir.dir);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
 
     }
     GameObject FindNoteInSlot(GameObject slot)
@@ -115,19 +117,17 @@ public class PlayerInputMovement : MonoBehaviour
         return null;
     }
 
-    void PrintNoteDirectionPairs(NoteDirectionPair[] pairs)
+    void PrintNoteDirectionPairs(NoteDir[] pairs)
     {
         foreach (var pair in pairs)
         {
-            if (pair.note != null && pair.direction != null)
-            {
-                Debug.Log($"Note: {pair.note.name}, Direction: {pair.direction.name}");
-            }
+            Debug.Log($"Note: {pair.note}, Direction: {pair.dir}");
         }
     }
 
     public void OnButtonClick()
     {
-        GetNoteDirectionPairs();
+        NoteDir[] moves = GetNoteDirectionPairs();
+        StartCoroutine(move(moves));
     }
 }
