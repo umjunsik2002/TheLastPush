@@ -40,12 +40,12 @@ public class ButtonManager : MonoBehaviour
 
     public void clickLevel1()
     {
-
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void clickLevel2()
     {
-
+        SceneManager.LoadScene("SampleScene2");
     }
 
     public void clickEnglish()

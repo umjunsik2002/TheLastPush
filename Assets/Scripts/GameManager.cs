@@ -7,7 +7,8 @@ using static PlayerInputMovement;
 using static EnemyBehavior;
 using PlayerNoteDir = PlayerInputMovement.NoteDir;
 using EnemyNoteDir = EnemyBehavior.NoteDir;
-
+using SceneManager = UnityEngine.SceneManagement.SceneManager;
+using UnityEditor.SearchService;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver;
@@ -26,6 +27,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        if (currLevel == 2)
+        {
+            GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
+            player.ResetPlayer();
+            enemy.ResetEnemy(new Tuple<int, int>(3, 1));
+        }
         gameOver = false;
         gameWon = false;
     }
@@ -36,13 +44,13 @@ public class GameManager : MonoBehaviour
         if (gameWon)
         {
             GameObject.Find("LevelManager").GetComponent<LevelManager>().greenify();
-            if(currLevel == 1){
-                currLevel = 2;
-                GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
-                player.ResetPlayer();
-                enemy.ResetEnemy(new Tuple<int, int>(3,3));
-                gameOver = false;
-                gameWon = false;
+            if (currLevel == 1)
+            {
+                SceneManager.LoadScene("Level");
+            }
+            else if (currLevel == 2)
+            {
+                SceneManager.LoadScene("Credits");
             }
         }
         else if (gameOver && !gameWon)
@@ -54,13 +62,15 @@ public class GameManager : MonoBehaviour
         {
 
             GameObject.Find("Player").GetComponent<PlayerController>().ResetPlayer();
+            GameObject.Find("Enemy").GetComponent<EnemyController>().ResetEnemy(new Tuple<int, int>(3, 1));
             GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
             gameOver = false;
             gameWon = false;
         }
 
     }
-    public int getLevel(){
+    public int getLevel()
+    {
         return currLevel;
     }
     void move(PlayerNoteDir move, EnemyNoteDir enemyMove)
@@ -120,14 +130,14 @@ public class GameManager : MonoBehaviour
             }
 
 
-                for (int i = 0; i < playerMoves[idx].note; i++)
-                {
-                    if(gameOver) yield break;   
-                    move(playerMoves[idx], enemyMoves[enemyIdx]);
-                    enemyIdx++;
-                    if (enemyIdx >= enemyMoves.Length) enemyIdx = 0;
-                    yield return new WaitForSeconds(0.5f);
-                }
+            for (int i = 0; i < playerMoves[idx].note; i++)
+            {
+                if (gameOver) yield break;
+                move(playerMoves[idx], enemyMoves[enemyIdx]);
+                enemyIdx++;
+                if (enemyIdx >= enemyMoves.Length) enemyIdx = 0;
+                yield return new WaitForSeconds(0.5f);
+            }
 
             uiButton.gameObject.SetActive(false);
             idx++;
