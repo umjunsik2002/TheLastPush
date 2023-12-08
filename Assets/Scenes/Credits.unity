@@ -722,16 +722,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Regis Pak
+  m_text: 'Regis Pak : Project Lead, Music, 3D Artist
 
-    Steven Hernandez
+    An-Ran Lee : Mechanic
+    Programmer
 
-    Sooin Jung
+    Samuel Liao : UI Programmer
 
-    Aaron Lee
+    Sooin Jung :  Localization,
+    Menu Management
 
-    Samuel
-    Liao'
+    Steven Hernandez : 3D Artist, UI Artist'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9eb4b86a5015f14ab892a80ee08a41c, type: 2}
   m_sharedMaterial: {fileID: -994212238954590288, guid: a9eb4b86a5015f14ab892a80ee08a41c, type: 2}
@@ -758,8 +759,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
