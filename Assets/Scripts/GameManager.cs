@@ -53,7 +53,8 @@ public class GameManager : MonoBehaviour
     }
     void move(PlayerNoteDir move, EnemyNoteDir enemyMove)
     {
-
+        //
+        StartCoroutine(playerInput.RotatePlayerSmoothly(new Vector3(move.dir.Item1, 0, move.dir.Item2)));
         player.movePlayer(move.dir);
         StartCoroutine(enemyBehavior.RotateEnemySmoothly(new Vector3(enemyMove.dir.Item1, 0, enemyMove.dir.Item2)));
         enemy.moveEnemy(enemyMove.dir);

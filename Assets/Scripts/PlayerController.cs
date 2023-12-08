@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetPosition = transform.position;
+        Vector3 targetPosition = transform.position+ new Vector3(0,2,0);
         SetTiles(GameObject.Find("LevelManager").GetComponent<LevelManager>().TileArray);
         if (Input.GetKeyDown(KeyCode.W) && playerPos.Item2 < tiles.GetLength(1) - 1)
         {
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
 
            // transform.position = tiles[playerPos.Item1, playerPos.Item2].transform.position;
-            targetPosition = tiles[playerPos.Item1, playerPos.Item2].transform.position;
+            targetPosition = tiles[playerPos.Item1, playerPos.Item2].transform.position+ new Vector3(3,3,0);
             transform.position = Vector3.Lerp(transform.position, targetPosition, movementSpeed * Time.deltaTime);
         }
 
