@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class LevelManager : MonoBehaviour
     public GameObject[,] TileArray;
     public float levelWidth;
     public float levelLength;
+
+    List<Tuple<int, int>> hazardTiles = new List<Tuple<int, int>>();
     // Start is called before the first frame update
     public void Start()
     {
@@ -24,46 +27,53 @@ public class LevelManager : MonoBehaviour
 
     void generateLevel()
     {
+        GameManager myGameManager = FindObjectOfType<GameManager>();
+        int level = myGameManager.getLevel();
+        if(level == 1){
+            levelWidth = 7;
+            levelLength = 4;
+        }
+        else if(level == 2){
+            levelWidth = 4;
+            levelLength = 12;
+            TileArray = new GameObject[(int)levelWidth, (int)levelLength];
+            hazardTiles.Add(new Tuple<int, int>(0, 11));
+            hazardTiles.Add(new Tuple<int, int>(0, 10));
+            hazardTiles.Add(new Tuple<int, int>(0, 9));
+            hazardTiles.Add(new Tuple<int, int>(3, 9));
+            hazardTiles.Add(new Tuple<int, int>(3, 10));
+            hazardTiles.Add(new Tuple<int, int>(3, 11));
+        }
         float tileWidth = TilePrefab.GetComponent<Renderer>().bounds.size.x;
         for (int i = 0; i < levelWidth; i++)
         {
             for (int j = 0; j < levelLength; j++)
             {
-                
-                GameObject tile = Instantiate(TilePrefab, new Vector3(i * tileWidth, 0, j * tileWidth), Quaternion.identity*Quaternion. Euler(0, 0, -90));
-                //tile.transform.rotation *= Quaternion. Euler(0, -90, 0);
-                tile.SetActive(true); 
-                
-                if (i == 0 && j == 0)
-                {
-                    tile.GetComponent<TileScript>().tileType = TileScript.TileType.Walkable;
-                    TileArray[i, j] = tile;
-                    continue;
-                }
+
+
+                GameObject tile = Instantiate(TilePrefab, new Vector3(i * tileWidth, 0, j * tileWidth), Quaternion.identity * Quaternion.Euler(0, 0, -90));
+                tile.SetActive(true);
+
+
                 if (i == levelWidth - 1 && j == levelLength - 1)
                 {
                     tile.GetComponent<TileScript>().tileType = TileScript.TileType.Goal;
                     TileArray[i, j] = tile;
                     continue;
                 }
-                //this generates a random tile type
-                // Array values = Enum.GetValues(typeof(TileScript.TileType));
-                // System.Random random = new System.Random();
-                // tile.GetComponent<TileScript>().tileType = (TileScript.TileType)values.GetValue(random.Next(values.Length));
 
-                float random = UnityEngine.Random.Range(0f, 1f);
-                if (random < 0.1f)
-                {
-                    tile.GetComponent<TileScript>().tileType = TileScript.TileType.Hazard;
-                }
-                else
-                {
-                    tile.GetComponent<TileScript>().tileType = TileScript.TileType.Walkable;
+                tile.GetComponent<TileScript>().tileType = TileScript.TileType.Walkable;
+                if(hazardTiles.Contains(new Tuple<int, int>(i,j))){
+                    tile.GetComponent<TileScript>().tileType = TileScript.TileType.Obstacle;
                 }
                 TileArray[i, j] = tile;
             }
         }
+
+
     }
+
+
 
     //these are just to test game over and game won
     public void greenify()

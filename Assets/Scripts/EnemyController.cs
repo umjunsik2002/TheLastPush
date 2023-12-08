@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private GameObject[,] tiles;
     private Tuple<int, int> enemyPos;
-    public Tuple<int,int> initialpos = new Tuple<int, int>(5,5);
+    public Tuple<int,int> initialpos = new Tuple<int, int>(3,1);
 
     EnemyBehavior enemyBehavior;
 
@@ -58,9 +58,9 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void ResetPlayer()
+    public void ResetEnemy(Tuple<int, int> pos)
     {
-        enemyPos = new Tuple<int, int>(5, 5);
+        enemyPos = pos;
     }
     public List<Tuple<int, int>> GetEnemyTiles()
     {

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 {
     public bool gameOver;
     public bool gameWon;
+    public int currLevel = 2;
 
     public List<Tuple<int, int>> enemyTiles = new List<Tuple<int, int>>();
 
@@ -35,6 +36,14 @@ public class GameManager : MonoBehaviour
         if (gameWon)
         {
             GameObject.Find("LevelManager").GetComponent<LevelManager>().greenify();
+            if(currLevel == 1){
+                currLevel = 2;
+                GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
+                player.ResetPlayer();
+                enemy.ResetEnemy(new Tuple<int, int>(2,7));
+                gameOver = false;
+                gameWon = false;
+            }
         }
         else if (gameOver && !gameWon)
         {
@@ -50,6 +59,9 @@ public class GameManager : MonoBehaviour
             gameWon = false;
         }
 
+    }
+    public int getLevel(){
+        return currLevel;
     }
     void move(PlayerNoteDir move, EnemyNoteDir enemyMove)
     {
