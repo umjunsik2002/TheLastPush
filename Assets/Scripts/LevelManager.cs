@@ -35,15 +35,15 @@ public class LevelManager : MonoBehaviour
             levelLength = 4;
         }
         else if(level == 2){
-            levelWidth = 4;
-            levelLength = 12;
+            levelWidth = 10;
+            levelLength = 8;
             
-            hazardTiles.Add(new Tuple<int, int>(0, 11));
-            hazardTiles.Add(new Tuple<int, int>(0, 10));
-            hazardTiles.Add(new Tuple<int, int>(0, 9));
-            hazardTiles.Add(new Tuple<int, int>(3, 9));
-            hazardTiles.Add(new Tuple<int, int>(3, 10));
-            hazardTiles.Add(new Tuple<int, int>(3, 11));
+            hazardTiles.Add(new Tuple<int, int>(0, 4));
+            hazardTiles.Add(new Tuple<int, int>(0, 5));
+            hazardTiles.Add(new Tuple<int, int>(0, 6));
+            hazardTiles.Add(new Tuple<int, int>(9, 7));
+            hazardTiles.Add(new Tuple<int, int>(9, 6));
+            hazardTiles.Add(new Tuple<int, int>(9, 5));
         }
         TileArray = new GameObject[(int)levelWidth, (int)levelLength];
         float tileWidth = TilePrefab.GetComponent<Renderer>().bounds.size.x;

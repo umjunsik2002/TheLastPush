@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
                 currLevel = 2;
                 GameObject.Find("LevelManager").GetComponent<LevelManager>().ResetLevel();
                 player.ResetPlayer();
-                enemy.ResetEnemy(new Tuple<int, int>(2,7));
+                enemy.ResetEnemy(new Tuple<int, int>(3,3));
                 gameOver = false;
                 gameWon = false;
             }
