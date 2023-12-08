@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static PlayerInputMovement;
 using static EnemyBehavior;
 using PlayerNoteDir = PlayerInputMovement.NoteDir;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerInputMovement playerInput;
     [SerializeField] private EnemyController enemy;
     [SerializeField] private EnemyBehavior enemyBehavior;
+    public Button uiButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,27 +83,34 @@ public class GameManager : MonoBehaviour
 
    
     IEnumerator CustomUpdate(){
+        
         int idx = 0;
         int enemyIdx = 0;
         Debug.Log("playerMoves.Length: " + playerMoves.Length);
         //TODO: && !gameOver
         while(idx < playerMoves.Length && idx < enemyMoves.Length){
             
-            if(playerMoves[idx].note == 0) yield break;
-
+            if(playerMoves[idx].note == 0){
+                uiButton.gameObject.SetActive(true);
+                yield break;
+            } 
+            
             for(int i = 0; i< playerMoves[idx].note; i++){
                 move(playerMoves[idx], enemyMoves[enemyIdx]);
                 enemyIdx++;
                 if(enemyIdx >= enemyMoves.Length) enemyIdx = 0;
                 yield return new WaitForSeconds(0.5f);
             }
+            uiButton.gameObject.SetActive(false);
             idx++;
 
         }
         
+        
     }
     public void OnButtonClick()
     {
+        uiButton.gameObject.SetActive(false);
         Debug.Log("enemytiles added");
         playerMoves = playerInput.GetNoteDirectionPairs(); //get the player's move queue
         enemyMoves = GameObject.Find("Enemy").GetComponent<EnemyBehavior>().GetNoteDirectionPairs();
@@ -109,7 +118,11 @@ public class GameManager : MonoBehaviour
         // foreach (var enemy in EnemyList){
                        
         // }
+        
         StartCoroutine(CustomUpdate());
-
+        
+        
+        
+        
     }
 }
