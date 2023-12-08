@@ -74,10 +74,10 @@ public class EnemyController : MonoBehaviour
         enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2+ enemyDir.Item2+ enemyDir.Item2));
         
         // Print the tiles to the console
-        foreach (var tile in enemyTiles)
-        {
-            Debug.Log($"Enemy Tile: ({tile.Item1}, {tile.Item2})");
-        }
+        // foreach (var tile in enemyTiles)
+        // {
+        //     Debug.Log($"Enemy Tile: ({tile.Item1}, {tile.Item2})");
+        // }
 
         return enemyTiles;
         }

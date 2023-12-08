@@ -2051,6 +2051,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: 0
   gameWon: 0
+  player: {fileID: 511173192}
+  playerInput: {fileID: 1197148529}
+  enemy: {fileID: 1462920185}
+  enemyBehavior: {fileID: 1462920184}
+  uiButton: {fileID: 1841946939}
 --- !u!4 &402772673
 Transform:
   m_ObjectHideFlags: 0
@@ -6611,20 +6616,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1197148529}
-        m_TargetAssemblyTypeName: PlayerInputMovement, Assembly-CSharp
-        m_MethodName: OnButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462920184}
-        m_TargetAssemblyTypeName: EnemyBehavior, Assembly-CSharp
+      - m_Target: {fileID: 402772672}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
