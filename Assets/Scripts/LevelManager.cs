@@ -29,9 +29,11 @@ public class LevelManager : MonoBehaviour
         {
             for (int j = 0; j < levelLength; j++)
             {
-
-                GameObject tile = Instantiate(TilePrefab, new Vector3(i * tileWidth, 0, j * tileWidth), Quaternion.identity);
+                
+                GameObject tile = Instantiate(TilePrefab, new Vector3(i * tileWidth, 0, j * tileWidth), Quaternion.identity*Quaternion. Euler(0, 0, -90));
+                //tile.transform.rotation *= Quaternion. Euler(0, -90, 0);
                 tile.SetActive(true); 
+                
                 if (i == 0 && j == 0)
                 {
                     tile.GetComponent<TileScript>().tileType = TileScript.TileType.Walkable;
