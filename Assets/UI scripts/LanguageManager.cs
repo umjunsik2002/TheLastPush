@@ -20,4 +20,14 @@ public class LanguageManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void clickEnglish()
+    {
+        languageCode = "EN";
+    }
+
+    public void clickKorean()
+    {
+        languageCode = "KO";
+    }
 }
