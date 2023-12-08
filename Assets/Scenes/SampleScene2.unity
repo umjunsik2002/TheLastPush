@@ -2189,7 +2189,7 @@ MonoBehaviour:
   playerInput: {fileID: 1197148529}
   enemy: {fileID: 185939941}
   enemyBehavior: {fileID: 185939942}
-  restart: {fileID: 0}
+  restart: {fileID: 1465141347}
   uiButton: {fileID: 1841946939}
 --- !u!4 &402772673
 Transform:
