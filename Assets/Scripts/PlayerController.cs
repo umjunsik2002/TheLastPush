@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private GameObject[,] tiles;
     private Tuple<int, int> playerPos;
 
+    
+
     //adjust speed
     public float movementSpeed = 5f;
 
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerPos = new Tuple<int, int>(0, 0);
+    }
+    public Tuple<int, int> getPlayerPos(){
+        return playerPos;
     }
 
     void Update()

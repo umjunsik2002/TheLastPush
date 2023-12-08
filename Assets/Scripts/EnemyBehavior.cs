@@ -9,6 +9,8 @@ public class EnemyBehavior : MonoBehaviour
     Dictionary<string, int> noteTypes = new Dictionary<string, int>();
     Dictionary<string, Tuple<int, int>> dirTypes = new Dictionary<string, Tuple<int, int>>();
 
+    public Tuple <int,int> EnemyDir = new Tuple<int,int>(0,0);
+
     [System.Serializable]
     public struct NoteDirectionPair
     {
@@ -116,6 +118,7 @@ public class EnemyBehavior : MonoBehaviour
                 if (!isRotating)
                 {
                     StartCoroutine(RotateEnemySmoothly(new Vector3(noteDir.dir.Item1, 0, noteDir.dir.Item2)));
+                    EnemyDir = noteDir.dir;
                 }
                 enemy.moveEnemy(noteDir.dir);
                 yield return new WaitForSeconds(0.5f);

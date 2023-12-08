@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public bool gameWon;
 
+    public List<Tuple<int, int>> enemyTiles = new List<Tuple<int, int>>();
+
     PlayerNoteDir[] playerMoves;
     EnemyNoteDir[] enemyMoves;
     [SerializeField] private PlayerController player;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(gameWon){
             GameObject.Find("LevelManager").GetComponent<LevelManager>().greenify();
         } else if(gameOver && !gameWon){
@@ -41,21 +44,51 @@ public class GameManager : MonoBehaviour
             gameOver = false;
             gameWon = false;
         }
+        
     }
     void move(PlayerNoteDir move, EnemyNoteDir enemyMove){
+        
         player.movePlayer(move.dir);
         StartCoroutine(enemyBehavior.RotateEnemySmoothly(new Vector3(enemyMove.dir.Item1, 0, enemyMove.dir.Item2)));
         enemy.moveEnemy(enemyMove.dir);
         //check collision
         //if collision, game over
+        CheckCollisionWithEnemy();
+
         
     }
+    void CheckCollisionWithEnemy()
+    {
+        Debug.Log("detected");
+        
+        // Check if the player is on an enemy tile or within its vision tile
+        Tuple<int,int> playerpos = player.getPlayerPos();
+
+        enemyTiles = enemy.GetEnemyTiles();
+        
+        foreach (var enemyTile in enemyTiles)
+        {
+            
+            if (playerpos == enemyTile)
+            {
+
+                // Pause or reset the game as needed
+                gameOver=true;
+                gameWon=false;
+
+                return; // Exit the loop if collision detected
+            }
+        }
+    }
+
+   
     IEnumerator CustomUpdate(){
         int idx = 0;
         int enemyIdx = 0;
         Debug.Log("playerMoves.Length: " + playerMoves.Length);
         //TODO: && !gameOver
         while(idx < playerMoves.Length && idx < enemyMoves.Length){
+            
             if(playerMoves[idx].note == 0) yield break;
 
             for(int i = 0; i< playerMoves[idx].note; i++){
@@ -67,12 +100,17 @@ public class GameManager : MonoBehaviour
             idx++;
 
         }
+        
     }
     public void OnButtonClick()
     {
+        Debug.Log("enemytiles added");
         playerMoves = playerInput.GetNoteDirectionPairs(); //get the player's move queue
         enemyMoves = GameObject.Find("Enemy").GetComponent<EnemyBehavior>().GetNoteDirectionPairs();
-
+        // GameObject[] EnemyList = GameObject.FindGameObjectsWithTag("Enemy");
+        // foreach (var enemy in EnemyList){
+                       
+        // }
         StartCoroutine(CustomUpdate());
 
     }

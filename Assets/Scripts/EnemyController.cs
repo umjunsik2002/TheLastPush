@@ -10,6 +10,10 @@ public class EnemyController : MonoBehaviour
     private Tuple<int, int> enemyPos;
     public Tuple<int,int> initialpos = new Tuple<int, int>(5,5);
 
+    EnemyBehavior enemyBehavior;
+
+    public List<Tuple<int, int>> enemyTiles = new List<Tuple<int, int>>();
+
     //adjust speed
     public float movementSpeed = 5f;
 
@@ -19,6 +23,7 @@ public class EnemyController : MonoBehaviour
     }
     void Start()
     {
+        
         
         enemyPos = initialpos;
     }
@@ -57,5 +62,23 @@ public class EnemyController : MonoBehaviour
     {
         enemyPos = new Tuple<int, int>(5, 5);
     }
+    public List<Tuple<int, int>> GetEnemyTiles()
+    {
+        Tuple<int, int> enemyDir = GetComponent<EnemyBehavior>().EnemyDir;
+
+        //enemyTiles.Clear(); // Clear the list before populating it again
+
+        enemyTiles.Add(enemyPos);
+        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2));
+        enemyTiles.Add(new Tuple<int, int>(enemyPos.Item1 + enemyDir.Item1 + enemyDir.Item1, enemyPos.Item2 + enemyDir.Item2 + enemyDir.Item2));
+
+        // Print the tiles to the console
+        foreach (var tile in enemyTiles)
+        {
+            Debug.Log($"Enemy Tile: ({tile.Item1}, {tile.Item2})");
+        }
+
+        return enemyTiles;
+        }
 }
 
