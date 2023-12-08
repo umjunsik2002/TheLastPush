@@ -23,10 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerInputMovement playerInput;
     [SerializeField] private EnemyController enemy;
     [SerializeField] private EnemyBehavior enemyBehavior;
+    [SerializeField] private Canvas restart;
+
     public Button uiButton;
     // Start is called before the first frame update
     void Start()
     {
+        
 
         if (currLevel == 2)
         {
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         }
         else if (gameOver && !gameWon)
         {
+            restart.gameObject.SetActive(true);   
             GameObject.Find("LevelManager").GetComponent<LevelManager>().redify();
         }
 
