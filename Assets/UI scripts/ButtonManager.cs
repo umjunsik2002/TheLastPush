@@ -33,6 +33,11 @@ public class ButtonManager : MonoBehaviour
         pauseManager.clickPause();
     }
 
+    public void clickCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void clickBack()
     {
         SceneManager.LoadScene("Start");
