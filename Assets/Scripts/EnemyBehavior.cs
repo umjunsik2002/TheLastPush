@@ -87,7 +87,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     private bool isRotating = false;
 
-    IEnumerator RotateEnemySmoothly(Vector3 targetDirection)
+    public IEnumerator RotateEnemySmoothly(Vector3 targetDirection)
     {
         isRotating = true;
 
