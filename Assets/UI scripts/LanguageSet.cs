@@ -40,9 +40,9 @@ public class LanguageSet : MonoBehaviour
 
         if (languageCode == "KO")
         {
-            startButtonText.text = "½ÃÀÛ";
-            optionsButtonText.text = "¼³Á¤";
-            creditsButtonText.text = "Å©·¹µ÷";
+            startButtonText.text = "ì‹œì‘";
+            optionsButtonText.text = "ì„¤ì •";
+            creditsButtonText.text = "í¬ë ˆë”§";
         }
     }
 }

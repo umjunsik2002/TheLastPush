@@ -41,10 +41,10 @@ public class UILanguageSet : MonoBehaviour
 
         if (languageCode == "KO")
         {
-            pausedText.text = "ÀÏ½Ã Á¤Áö";
-            resumeText.text = "°è¼ÓÇÏ±â";
-            volumeText.text = "º¼·ı";
-            mainMenuText.text = "¸ŞÀÎ ¸Ş´º";
+            pausedText.text = "ì¼ì‹œì •ì§€";
+            resumeText.text = "ê³„ì†í•˜ê¸°";
+            volumeText.text = "ë³¼ë¥¨";
+            mainMenuText.text = "ë©”ì¸ ë©”ë‰´";
         }
     }
 }

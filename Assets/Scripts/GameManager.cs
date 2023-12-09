@@ -8,7 +8,7 @@ using static EnemyBehavior;
 using PlayerNoteDir = PlayerInputMovement.NoteDir;
 using EnemyNoteDir = EnemyBehavior.NoteDir;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
-using UnityEditor.SearchService;
+// using UnityEditor.SearchService;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver;

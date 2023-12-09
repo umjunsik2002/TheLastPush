@@ -34,7 +34,7 @@ public class LevelLanguageSet : MonoBehaviour
 
         if (languageCode == "KO")
         {
-            backText.text = "µÚ·Î °¡±â";
+            backText.text = "ë’¤ë¡œê°€ê¸°";
         }
     }
 }
